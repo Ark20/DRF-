@@ -1,6 +1,37 @@
 # DRF
 DRF Tutorial 
 
+* Create & Navigate to project home 
+ ```
+ mkdir twillionTracker
+cd twillionTracker/
+```
+
+* Create & Activate virtual environment 
+```
+python3 -m venv env
+source env/bin/activate
+```
+
+* Add Django & DRF 
+
+```
+pip install django
+pip install djangorestframework
+```
+
+* Create a DRF Project & app 
+ ```
+django-admin startproject twillionTracker
+cd twillionTracker 
+
+django-admin startapp twillions
+cd twillions 
+```
+
+
+
+
 #### views.py 
 
 ```python
@@ -19,6 +50,8 @@ class TwillionsViewSet(viewsets.ModelViewSet):
 
 from rest_framework import routers
 from twillions import views
+from django.urls import path,include
+
 
 router = routers.DefaultRouter()
 router.register(r'twillions', views.TwillionsViewSet)
@@ -68,4 +101,12 @@ class Twillion(models.Model):
 'rest_framework',
 'twillions.apps.TwillionsConfig',
 
+```
+
+* Create & Sync DB 
+
+```
+cd ..
+python manage.py makemigrations
+python manage.py migrate
 ```
